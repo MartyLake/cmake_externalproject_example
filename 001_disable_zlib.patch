@@ -1,0 +1,24 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 54150d7..deb7770 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -74,13 +74,13 @@ set_if_not_defined(NIFTI_INSTALL_ARCHIVE_DIR ${NIFTI_INSTALL_LIBRARY_DIR})
+ set_if_not_defined(NIFTI_INSTALL_INCLUDE_DIR include/nifti)
+ set_if_not_defined(NIFTI_ZLIB_LIBRARIES "")
+ set_if_not_defined(ZNZ_COMPILE_DEF "")
+-if(NOT NIFTI_ZLIB_LIBRARIES) # If using a custom zlib library, skip the find package
+-  ###  USE AS STAND ALONE PACKAGE
+-  find_package(ZLIB REQUIRED)
+-  set(NIFTI_ZLIB_LIBRARIES ${ZLIB_LIBRARIES})
+-endif()
++# if(NOT NIFTI_ZLIB_LIBRARIES) # If using a custom zlib library, skip the find package
++#   ###  USE AS STAND ALONE PACKAGE
++#   find_package(ZLIB REQUIRED)
++#   set(NIFTI_ZLIB_LIBRARIES ${ZLIB_LIBRARIES})
++# endif()
+ #message(STATUS "---------------------ZLIB -${NIFTI_ZLIB_LIBRARIES}--")
+-add_definitions(-DHAVE_ZLIB)
++#add_definitions(-DHAVE_ZLIB)
+ set_if_not_defined(NIFTI_INSTALL_NO_DEVELOPMENT 0)
+ set_if_not_defined(NIFTI_INSTALL_NO_LIBRARIES 0)
+ set_if_not_defined(NIFTI_INSTALL_NO_APPLICATIONS 0)
