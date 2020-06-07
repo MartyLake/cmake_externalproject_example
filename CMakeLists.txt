@@ -20,7 +20,7 @@ ExternalProject_Add(nifti
     SOURCE_DIR    nifti/src/nifti
     BINARY_DIR    nifti/src/nifti-build
     INSTALL_DIR   nifti_install
-    PATCH_COMMAND ${GIT_EXECUTABLE} --work-tree=. --git-dir=.git apply "${CMAKE_SOURCE_DIR}/001_disable_zlib.patch"  --ignore-whitespace --whitespace=nowarn --verbose
+    PATCH_COMMAND "${GIT_EXECUTABLE}" apply "${CMAKE_SOURCE_DIR}/001_disable_zlib.patch"  --ignore-whitespace --whitespace=nowarn --verbose
     CMAKE_ARGS "-DNIFTI_BUILD_APPLICATIONS=OFF" "-DNIFTI_BUILD_TESTING=OFF"
     BUILD_COMMAND ${CMAKE_COMMAND} --build . --target nifti2
     INSTALL_COMMAND ""
