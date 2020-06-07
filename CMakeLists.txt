@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 3.14.0)
 project(cmake_externalproject_example)
-add_executable(cmake_externalproject_example src/main.cpp)
 
 find_package(Git REQUIRED)
 if(Git_FOUND)
@@ -27,6 +26,9 @@ ExternalProject_Add(nifti
     # needed so patch does not apply twice (and fail)
     UPDATE_DISCONNECTED ON
 )
+
+add_executable(cmake_externalproject_example src/main.cpp)
+add_dependencies(cmake_externalproject_example nifti)
 
 target_link_directories(cmake_externalproject_example PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/nifti-prefix/$<CONFIG>/lib")
 target_include_directories(cmake_externalproject_example PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/nifti-prefix/$<CONFIG>/include/nifti")
