@@ -28,9 +28,11 @@ ExternalProject_Add(nifti
 )
 
 add_executable(cmake_externalproject_example src/main.cpp)
+install(TARGETS cmake_externalproject_example)
 add_dependencies(cmake_externalproject_example nifti)
 
 target_link_directories(cmake_externalproject_example PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/nifti-prefix/$<CONFIG>/lib")
 target_include_directories(cmake_externalproject_example PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/nifti-prefix/$<CONFIG>/include/nifti")
 target_link_libraries(cmake_externalproject_example PUBLIC nifti2 znz)
 
+include(CPack)
