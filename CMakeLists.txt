@@ -14,12 +14,6 @@ include(ExternalProject)
 ExternalProject_Add(nifti
     GIT_REPOSITORY https://github.com/NIFTI-Imaging/nifti_clib.git
     GIT_TAG master
-    TMP_DIR       nifti/tmp
-    STAMP_DIR     nifti/src/nifti-stamp
-    DOWNLOAD_DIR  nifti/src
-    SOURCE_DIR    nifti/src/nifti
-    BINARY_DIR    nifti/src/nifti-build
-    INSTALL_DIR   nifti_install
     PATCH_COMMAND "${GIT_EXECUTABLE}" apply "${CMAKE_SOURCE_DIR}/001_disable_zlib.patch"  --ignore-whitespace --whitespace=nowarn --verbose
     CMAKE_ARGS
         "-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}"
@@ -36,7 +30,7 @@ ExternalProject_Add(nifti
 target_link_libraries(cmake_externalproject_example PUBLIC nifti2)
 
 # TODO this should be automatic from nifti2 target, and should also be automatic of build type
-target_link_directories(cmake_externalproject_example PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/nifti/src/nifti-build/nifti2/$<CONFIG>" "${CMAKE_CURRENT_BINARY_DIR}/nifti/src/nifti-build/znzlib/$<CONFIG>")
-target_include_directories(cmake_externalproject_example PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/nifti/src/nifti/nifti2" "${CMAKE_CURRENT_BINARY_DIR}/nifti/src/nifti/znzlib")
+target_link_directories(cmake_externalproject_example PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/nifti-prefix/src/nifti-build/nifti2/$<CONFIG>" "${CMAKE_CURRENT_BINARY_DIR}/nifti-prefix/src/nifti-build/znzlib/$<CONFIG>")
+target_include_directories(cmake_externalproject_example PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/nifti-prefix/src/nifti/nifti2" "${CMAKE_CURRENT_BINARY_DIR}/nifti-prefix/src/nifti/znzlib")
 target_link_libraries(cmake_externalproject_example PUBLIC znz)
 
