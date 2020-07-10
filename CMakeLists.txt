@@ -11,9 +11,10 @@ set(VERSBOSE ON)
 
 include(ExternalProject)
 ExternalProject_Add(nifti
-    GIT_REPOSITORY https://github.com/NIFTI-Imaging/nifti_clib.git
-    GIT_TAG master
-    PATCH_COMMAND "${GIT_EXECUTABLE}" apply "${CMAKE_SOURCE_DIR}/001_disable_zlib.patch"  --ignore-whitespace --whitespace=nowarn --verbose
+  # GIT_REPOSITORY https://github.com/NIFTI-Imaging/nifti_clib.git
+  # GIT_TAG master
+  # PATCH_COMMAND "${GIT_EXECUTABLE}" apply "${CMAKE_SOURCE_DIR}/001_disable_zlib.patch"  --ignore-whitespace --whitespace=nowarn --verbose
+    SOURCE_DIR "${CMAKE_SOURCE_DIR}/deps/nifti-clib"
     CMAKE_ARGS
         "-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}"
         "-DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>/$<CONFIG>"

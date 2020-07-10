@@ -76,13 +76,13 @@ set_if_not_defined(NIFTI_INSTALL_MAN_DIR share/man/man1)
 set_if_not_defined(NIFTI_INSTALL_DOC_DIR share/doc/${PROJECT_NAME})
 set_if_not_defined(NIFTI_ZLIB_LIBRARIES "")
 set_if_not_defined(ZNZ_COMPILE_DEF "")
-if(NOT NIFTI_ZLIB_LIBRARIES) # If using a custom zlib library, skip the find package
-  ###  USE AS STAND ALONE PACKAGE
-  find_package(ZLIB REQUIRED)
-  set(NIFTI_ZLIB_LIBRARIES ${ZLIB_LIBRARIES})
-endif()
+# if(NOT NIFTI_ZLIB_LIBRARIES) # If using a custom zlib library, skip the find package
+#   ###  USE AS STAND ALONE PACKAGE
+#   find_package(ZLIB REQUIRED)
+#   set(NIFTI_ZLIB_LIBRARIES ${ZLIB_LIBRARIES})
+# endif()
 #message(STATUS "---------------------ZLIB -${NIFTI_ZLIB_LIBRARIES}--")
-add_definitions(-DHAVE_ZLIB)
+# add_definitions(-DHAVE_ZLIB)
 
 set_if_not_defined(NIFTI_INSTALL_NO_DOCS FALSE)
 
